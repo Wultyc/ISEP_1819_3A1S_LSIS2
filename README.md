@@ -22,4 +22,4 @@ Istituto Superior de Engenharia do Porto
 2018/2019
 
 ### Diretórios e suas funções ###
-- Diretório da aplicação que irá ser executada no Microwells Box
+- BoxApp/ - Diretório da aplicação que irá ser executada no Microwells Box
