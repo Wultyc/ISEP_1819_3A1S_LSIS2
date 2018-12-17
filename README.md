@@ -3,14 +3,17 @@
 Projeto relaizado na Unidade Curricular Laboratorios de Sistemas II durante o ano letivo 2018/2019
 
 ### Professores Orientadores ###
-Susana Nicola
-Carlos Felgueiras
-Rui Chibante
-Alberto Pereira
+- Susana Nicola  
+- Carlos Felgueiras  
+- Rui Chibante  
+- Alberto Pereira  
 
 ### Autores ###
-Jorge Gabriel Azevedo  
-André Oliveira
+- Rui Pinto  
+- Brenda Espírito Santo  
+- Jorge Azevedo  
+- Bárbara Santos  
+- Nuno Dinis
 
 ### Escola ###
 Istituto Superior de Engenharia do Porto
