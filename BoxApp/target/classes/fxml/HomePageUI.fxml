@@ -19,6 +19,7 @@
                 <ImageView image="icons/reload.png" />
             </graphic>-->
         </Button>
+        
         <Button fx:id="btnPulsCardi" layoutX="58.0" layoutY="195.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="380.0" text="Pulso Cardíaco" textAlignment="CENTER" wrapText="true">
             <font>
                 <Font size="36.0" />

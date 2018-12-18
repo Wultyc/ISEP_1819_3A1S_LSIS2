@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.HomePageUI">
+<AnchorPane id="AnchorPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.HomePageUI">
     <children>
         <Label layoutX="58.0" layoutY="39.0" text="Microwells Box">
             <font>
@@ -19,7 +19,8 @@
                 <ImageView image="icons/reload.png" />
             </graphic>-->
         </Button>
-        <Button fx:id="btnPulsCardi" layoutX="58.0" layoutY="195.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="380.0" text="Pulso Cardíaco" textAlignment="CENTER" wrapText="true">
+        
+        <Button fx:id="btnPulsoCardiaco" layoutX="58.0" layoutY="195.0" mnemonicParsing="false" onAction="#loadPulsoCardiaco" prefHeight="150.0" prefWidth="380.0" text="Pulso Cardíaco" textAlignment="CENTER" wrapText="true">
             <font>
                 <Font size="36.0" />
             </font>
@@ -27,7 +28,7 @@
                 <Glow />
             </effect>
         </Button>
-        <Button fx:id="btnPressArt" layoutX="581.0" layoutY="195.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="380.0" text="Pressão Arterial" textAlignment="CENTER" wrapText="true">
+        <Button fx:id="btnPressaoArterial" layoutX="581.0" layoutY="195.0" mnemonicParsing="false" onAction="#loadPressaoArterial" prefHeight="150.0" prefWidth="380.0" text="Pressão Arterial" textAlignment="CENTER" wrapText="true">
             <font>
                 <Font size="36.0" />
             </font>
@@ -35,7 +36,7 @@
             <Glow />
          </effect>
         </Button>
-        <Button fx:id="btnPesoAltura" layoutX="58.0" layoutY="389.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="380.0" text="Peso e Altura" textAlignment="CENTER" wrapText="true">
+        <Button fx:id="btnPesoAltura" layoutX="58.0" layoutY="389.0" mnemonicParsing="false" onAction="#loadPesoAltura" prefHeight="150.0" prefWidth="380.0" text="Peso e Altura" textAlignment="CENTER" wrapText="true">
             <font>
                 <Font size="36.0" />
             </font>
