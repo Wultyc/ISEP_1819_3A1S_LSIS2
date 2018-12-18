@@ -18,7 +18,3 @@
         -fx-display: inline-block;
         -fx-font-weight: bold;
 }
-
-#btnReload{
-    -fx-background-image: url("icons/reaload.png"); 
-}

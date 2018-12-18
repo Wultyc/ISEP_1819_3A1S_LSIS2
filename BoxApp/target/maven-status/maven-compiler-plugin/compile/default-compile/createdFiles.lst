@@ -1,3 +1,4 @@
 UI/HomePageUI.class
 com/microwells/boxapp/MainApp.class
-com/microwells/boxapp/FXMLController.class
+UI/AboutAppUI.class
+UI/MedidorPulsoCardiacoUI.class
