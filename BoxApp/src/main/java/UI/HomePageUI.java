@@ -53,14 +53,6 @@ public class HomePageUI implements Initializable {
     @FXML
     private void loadAboutApp(ActionEvent event) {
         try {
-            /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/AboutApp.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Microwell Box - Sobre");
-            stage.setScene(new Scene(root1));
-            stage.setResizable(false);
-            stage.show();*/
-
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/AboutApp.fxml"));
 
             Scene HomePageUI = new Scene(root);

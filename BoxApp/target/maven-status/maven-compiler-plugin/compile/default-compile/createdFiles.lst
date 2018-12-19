@@ -1,4 +1,4 @@
-UI/HomePageUI.class
-com/microwells/boxapp/MainApp.class
-UI/AboutAppUI.class
-UI/MedidorPulsoCardiacoUI.class
+com\microwells\boxapp\MainApp.class
+UI\MedidorPulsoCardiacoUI.class
+UI\AboutAppUI.class
+UI\HomePageUI.class
