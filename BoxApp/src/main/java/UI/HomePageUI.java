@@ -52,7 +52,7 @@ public class HomePageUI implements Initializable {
 
     @FXML
     private void loadAboutApp(ActionEvent event) {
-        try {
+        try { 
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/AboutApp.fxml"));
 
             Scene HomePageUI = new Scene(root);
