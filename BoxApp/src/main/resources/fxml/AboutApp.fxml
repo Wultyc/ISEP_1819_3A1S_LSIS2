@@ -14,6 +14,6 @@
          <font>
             <Font size="21.0" />
          </font></Label>
-      <Label fx:id="lable1" layoutX="13.0" layoutY="79.0" prefHeight="154.0" prefWidth="575.0" text="" textAlignment="JUSTIFY" wrapText="true" />
+      <Label fx:id="lable1" layoutX="13.0" layoutY="79.0" prefHeight="175.0" prefWidth="575.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed lectus at augue scelerisque facilisis. Morbi gravida tortor eu turpis ultricies, et dictum neque porttitor. Cras tristique ipsum consectetur purus porta, nec tempus erat molestie. Sed ultrices fringilla iaculis. Etiam cursus tortor eget tempor maximus. Quisque vel vestibulum est. Vivamus quis nunc elit. Ut dignissim, est vel suscipit egestas, justo nulla auctor sapien, nec tincidunt ex velit et purus. Sed placerat tellus neque, at malesuada felis lacinia quis. Sed ultrices feugiat turpis non vestibulum. Ut quam orci, vehicula sit amet pretium eu, hendrerit eget diam. Sed vehicula laoreet justo a finibus. Suspendisse in tempus dui. Cras non turpis velit. Etiam vel diam tempus, fringilla felis a, sollicitudin lorem. Mauris tincidunt dolor id posuere varius." textAlignment="JUSTIFY" wrapText="true" />
    </children>
 </AnchorPane>
