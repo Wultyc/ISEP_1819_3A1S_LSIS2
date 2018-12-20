@@ -9,7 +9,7 @@ bool send_module_info(){
 }
 
 bool send_integrity_state(){
-  Serial.print(T);  //Para já fica assim
+  Serial.print("T");  //Para já fica assim
 }
 
 bool send_nonDf(){
