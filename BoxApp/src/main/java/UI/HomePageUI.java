@@ -10,14 +10,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 public class HomePageUI implements Initializable {
 
     @FXML
-    private AnchorPane rootPane;
+    private BorderPane rootPane;
     @FXML
     private Button btnReload;
     @FXML
@@ -38,8 +38,26 @@ public class HomePageUI implements Initializable {
 
     @FXML
     private void loadPulsoCardiaco(ActionEvent event) throws IOException {
-        AnchorPane loadPane = FXMLLoader.load(getClass().getResource("/fxml/MedidorPulsoCardiaco.fxml"));
-        rootPane.getChildren().setAll(loadPane);
+        /*BorderPane loadPane = FXMLLoader.load(getClass().getResource("/fxml/MedidorPulsoCardiaco.fxml"));
+        rootPane.getChildren().setAll(loadPane);*/
+        
+        try { 
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/MedidorPulsoCardiaco.fxml"));
+
+            Scene HomePageUI = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.setTitle("Microwell Box - Medidor de Pulso Cardíaco");
+            //stage.setFullScreen(true); //Janela em full-screen
+            stage.setMaximized(true); //Janela maximizada
+            stage.setScene(HomePageUI);
+            stage.show();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro! Não foi possivel carregar a página", "Erro!", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e.toString());
+        }
+        
     }
 
     @FXML

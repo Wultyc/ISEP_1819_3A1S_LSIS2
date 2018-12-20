@@ -2,15 +2,30 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MedidorPulsoCardiacoUI">
-   <children>
-      <Label layoutX="14.0" layoutY="14.0" text="Medidor de Pulso Cardioco" />
-      <Button layoutX="810.0" layoutY="17.0" mnemonicParsing="false" onAction="#loadHomePage" prefHeight="26.0" prefWidth="200.0" text="Regressar a HomePage" />
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</AnchorPane>
+<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="1024.0" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MedidorPulsoCardiacoUI">
+   <top>
+      <BorderPane fx:id="topMenuPane" prefHeight="45.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
+         <right>
+            <ButtonBar prefHeight="100.0" prefWidth="790.0" BorderPane.alignment="CENTER">
+              <buttons>
+                <Button fx:id="btnHomePage" mnemonicParsing="false" onAction="#loadHomePage" prefHeight="30.0" prefWidth="220.0" text="Regressar a Homepage" />
+              </buttons>
+               <BorderPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </BorderPane.margin>
+            </ButtonBar>
+         </right>
+         <left>
+            <Label fx:id="titleLable" text="Medidor do Pulso Cardiaco" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </BorderPane.margin>
+            </Label>
+         </left>
+      </BorderPane>
+   </top>
+</BorderPane>

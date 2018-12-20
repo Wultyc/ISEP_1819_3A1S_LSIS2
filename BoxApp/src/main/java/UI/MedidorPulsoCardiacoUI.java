@@ -7,13 +7,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 
 
 public class MedidorPulsoCardiacoUI implements Initializable {
 
     @FXML
-    private AnchorPane rootPane;
+    private BorderPane rootPane;
+    @FXML
+    private Button btnHomePage;
+    @FXML
+    private BorderPane topMenuPane;
+    @FXML
+    private Label titleLable;
 
 
     /**
@@ -26,8 +34,8 @@ public class MedidorPulsoCardiacoUI implements Initializable {
 
     @FXML
     private void loadHomePage(ActionEvent event) throws IOException {
-      AnchorPane loadPane = FXMLLoader.load(getClass().getResource("/fxml/HomePageUI.fxml"));
-      rootPane.getChildren().setAll(loadPane);  
+      /*BorderPane loadPane = FXMLLoader.load(getClass().getResource("/fxml/HomePageUI.fxml"));
+      rootPane.getChildren().setAll(loadPane);  */
     }
     
 }

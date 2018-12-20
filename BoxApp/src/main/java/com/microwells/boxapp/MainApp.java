@@ -17,9 +17,11 @@ public class MainApp extends Application {
         Scene HomePageUI = new Scene(root);
         HomePageUI.getStylesheets().add("/styles/Styles.css");
         
-        stage.setTitle("Microwell Box");
+    stage.setTitle("Microwell Box");
+        //stage.setFullScreen(true); //Janela em fullscreen
+        stage.setMaximized(true); //Janela maximizada
         stage.setScene(HomePageUI);
-        stage.setResizable(false);
+        //stage.setResizable(false);
         stage.show();
     }
 
