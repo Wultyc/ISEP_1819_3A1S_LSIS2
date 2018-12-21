@@ -2,6 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -15,5 +17,28 @@
             <Font size="21.0" />
          </font></Label>
       <Label fx:id="lable1" layoutX="13.0" layoutY="79.0" prefHeight="175.0" prefWidth="575.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed lectus at augue scelerisque facilisis. Morbi gravida tortor eu turpis ultricies, et dictum neque porttitor. Cras tristique ipsum consectetur purus porta, nec tempus erat molestie. Sed ultrices fringilla iaculis. Etiam cursus tortor eget tempor maximus. Quisque vel vestibulum est. Vivamus quis nunc elit. Ut dignissim, est vel suscipit egestas, justo nulla auctor sapien, nec tincidunt ex velit et purus. Sed placerat tellus neque, at malesuada felis lacinia quis. Sed ultrices feugiat turpis non vestibulum. Ut quam orci, vehicula sit amet pretium eu, hendrerit eget diam. Sed vehicula laoreet justo a finibus. Suspendisse in tempus dui. Cras non turpis velit. Etiam vel diam tempus, fringilla felis a, sollicitudin lorem. Mauris tincidunt dolor id posuere varius." textAlignment="JUSTIFY" wrapText="true" />
+      <Label layoutX="45.0" layoutY="299.0" text="Sistema desenvolvido por:" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/logo-big.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="300.0" layoutY="292.0" prefHeight="39.0" prefWidth="264.0" text="Para a produção deste projetp recooreu-se aos seguintes projetos Open Source" wrapText="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="290.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/rpi.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="75.0" layoutX="388.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/arduino.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="489.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/openjdk.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="77.0" layoutY="427.0" text=" © 2018-2019" />
    </children>
 </AnchorPane>
