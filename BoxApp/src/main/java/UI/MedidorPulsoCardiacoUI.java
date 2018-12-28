@@ -1,5 +1,6 @@
 package UI;
 
+import Controller.MedidorPulsoCardiacoController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,6 +14,8 @@ import javafx.scene.layout.BorderPane;
 
 public class MedidorPulsoCardiacoUI implements Initializable {
 
+    MedidorPulsoCardiacoController controller = new MedidorPulsoCardiacoController();
+    
     @FXML
     private BorderPane rootPane;
     @FXML
@@ -37,4 +40,12 @@ public class MedidorPulsoCardiacoUI implements Initializable {
       rootPane.getChildren().setAll(loadPane);  */
     }
     
+    public void startMeasure(){
+        controller.startMeasure();
+    }
+    
+    public void saveOnCloud(){
+        int id = 0; //Obetr esta informação de um campo na UI
+        controller.saveOnCloud(id);
+    }
 }
