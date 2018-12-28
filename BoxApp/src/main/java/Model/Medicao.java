@@ -4,7 +4,7 @@ package Model;
 import java.util.Date;
 
 
-public class Medicao {
+public abstract class Medicao {
     private int id;
     private Date timestamp;
 
@@ -36,9 +36,10 @@ public class Medicao {
     /**
      * @param timestamp the timestamp to set
      */
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp() {
+        Date timestamp = null;
         this.timestamp = timestamp;
     }
     
-    
+    public abstract boolean saveOnCloud();
 }

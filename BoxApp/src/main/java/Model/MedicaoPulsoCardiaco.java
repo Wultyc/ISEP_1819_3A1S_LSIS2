@@ -7,6 +7,7 @@ import java.util.Date;
 public class MedicaoPulsoCardiaco extends Medicao{
     
     private int pulsoMedio;
+    private boolean error;
     
     public MedicaoPulsoCardiaco(int id) {
         super(id);
@@ -38,7 +39,25 @@ public class MedicaoPulsoCardiaco extends Medicao{
      * @param timestamp the timestamp to set
      */
     @Override
-    public void setTimestamp(Date timestamp) {
-        super.setTimestamp(timestamp);
+    public void setTimestamp() {
+        super.setTimestamp();
+    }
+
+    /**
+     * @return the error
+     */
+    public boolean isError() {
+        return error;
+    }
+
+    /**
+     * @param error the error to set
+     */
+    public void setError(boolean error) {
+        this.error = error;
+    }
+    
+    public boolean saveOnCloud(){
+        return true;
     }
 }
