@@ -85,7 +85,8 @@
                         <Image url="@../icons/reload.png" />
                      </image>
                   </ImageView>
-               </graphic></Button>
+               </graphic>
+            </Button>
             <ImageView fitHeight="149.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
                <image>
                   <Image url="@../icons/logo-big.png" />
