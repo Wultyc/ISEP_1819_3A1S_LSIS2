@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+
 
 
 public class MainApp extends Application {
@@ -21,7 +23,8 @@ public class MainApp extends Application {
         //stage.setFullScreen(true); //Janela em fullscreen
         stage.setMaximized(true); //Janela maximizada
         stage.setScene(HomePageUI);
-        //stage.setResizable(false);
+        stage.getIcons().add(new Image("/icons/logo_app.png"));
+        stage.setResizable(false);
         stage.show();
     }
 

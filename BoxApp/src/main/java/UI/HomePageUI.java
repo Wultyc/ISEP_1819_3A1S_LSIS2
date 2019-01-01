@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -51,6 +52,7 @@ public class HomePageUI implements Initializable {
             //stage.setFullScreen(true); //Janela em full-screen
             stage.setMaximized(true); //Janela maximizada
             stage.setScene(HomePageUI);
+            stage.getIcons().add(new Image("/icons/logo_app.png"));
             stage.show();
 
         } catch (Exception e) {
@@ -78,6 +80,7 @@ public class HomePageUI implements Initializable {
 
             stage.setTitle("Microwell Box");
             stage.setScene(HomePageUI);
+            stage.getIcons().add(new Image("/icons/logo_app.png"));
             stage.setResizable(false);
             stage.show();
 
