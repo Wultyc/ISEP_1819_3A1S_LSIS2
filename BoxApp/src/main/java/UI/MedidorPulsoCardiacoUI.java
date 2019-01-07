@@ -31,6 +31,17 @@ public class MedidorPulsoCardiacoUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        boolean feedback = controller.startComunication();
+        
+        if(feedback){
+            //Ativa a UI
+        } else {
+            //Mensagem de erro
+            
+            //Fecha a janela
+            Stage stage = (Stage) btnHomePage.getScene().getWindow();
+            stage.close();
+        }
     }
 
     @FXML
@@ -39,7 +50,6 @@ public class MedidorPulsoCardiacoUI implements Initializable {
       rootPane.getChildren().setAll(loadPane);  */
 
         Stage stage = (Stage) btnHomePage.getScene().getWindow();
-        // do what you have to do
         stage.close();
     }
 

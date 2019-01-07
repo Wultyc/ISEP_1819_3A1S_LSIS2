@@ -3,7 +3,7 @@ package Medidores;
 
 import Model.MedicaoPulsoCardiaco;
 
-public class PulsoCardiaco {
+public class Oximetro {
         private final String complatibleModel = "oximetro";
     
     private String deviceCOM;
