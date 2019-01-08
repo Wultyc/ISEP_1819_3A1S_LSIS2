@@ -4,7 +4,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="1024.0" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MedidorPulsoCardiacoUI">
    <top>
@@ -12,7 +17,7 @@
          <right>
             <ButtonBar prefHeight="100.0" prefWidth="790.0" BorderPane.alignment="CENTER">
               <buttons>
-                <Button fx:id="btnHomePage" mnemonicParsing="false" onAction="#loadHomePage" prefHeight="30.0" prefWidth="220.0" text="Regressar a Homepage" />
+                <Button fx:id="btnHomePage" mnemonicParsing="false" onAction="#loadHomePage" prefHeight="25.0" prefWidth="170.0" text="Regressar a Homepage" />
               </buttons>
                <BorderPane.margin>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -28,4 +33,102 @@
          </left>
       </BorderPane>
    </top>
+   <left>
+      <Pane prefHeight="545.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnStartMeasure" layoutX="24.0" layoutY="41.0" mnemonicParsing="false" onAction="#startMeasure" prefHeight="50.0" prefWidth="200.0" text="Iniciar a Medição">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSaveSession" disable="true" layoutX="24.0" layoutY="127.0" mnemonicParsing="false" onAction="#saveSession" prefHeight="50.0" prefWidth="95.0" text="Guardar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnCancel" disable="true" layoutX="129.0" layoutY="128.0" mnemonicParsing="false" onAction="#loadHomePage" prefHeight="50.0" prefWidth="95.0" text="Cancelar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <TextField fx:id="tbID" disable="true" layoutX="24.0" layoutY="222.0" prefHeight="50.0" prefWidth="200.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+            <Button fx:id="btnKeyboard1" disable="true" layoutX="35.0" layoutY="297.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="1">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnKeyboard2" disable="true" layoutX="98.0" layoutY="297.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="2">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnKeyboard3" disable="true" layoutX="161.0" layoutY="296.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="3">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnKeyboard4" disable="true" layoutX="34.0" layoutY="365.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="4">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnKeyboard5" disable="true" layoutX="99.0" layoutY="366.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="5">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnKeyboard6" disable="true" layoutX="161.0" layoutY="365.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="6">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnKeyboard7" disable="true" layoutX="34.0" layoutY="429.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="7">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnKeyboard8" disable="true" layoutX="100.0" layoutY="429.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="8">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnKeyboard9" disable="true" layoutX="162.0" layoutY="429.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="9">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </left>
+   <right>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="140.0" prefHeight="146.0" prefWidth="175.0" text="Instruções" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </right>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imgGraph" fitHeight="137.0" fitWidth="446.0" layoutX="69.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/pulse.gif" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="66.0" layoutY="96.0" prefHeight="17.0" prefWidth="400.0" text="RESULTADO" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </center>
 </BorderPane>
