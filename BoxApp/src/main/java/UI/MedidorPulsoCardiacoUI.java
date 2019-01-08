@@ -38,6 +38,8 @@ public class MedidorPulsoCardiacoUI implements Initializable {
     @FXML
     private TextField tbID;
     @FXML
+    private Button btnKeyboard0;
+    @FXML
     private Button btnKeyboard1;
     @FXML
     private Button btnKeyboard2;
@@ -58,7 +60,11 @@ public class MedidorPulsoCardiacoUI implements Initializable {
     @FXML
     private ImageView imgGraph;
     @FXML
-    private Button btnSaveSession1;
+    private Button btnDelete;
+    @FXML
+    private Label lblInstrucoes;
+    @FXML
+    private Label lblResultado;
 
     /**
      * Initializes the controller class.
@@ -68,15 +74,17 @@ public class MedidorPulsoCardiacoUI implements Initializable {
         // TODO
         boolean feedback = controller.startComunication();
         
-        if(feedback){
-            //Ativa a UI
-        } else {
+        if(!feedback){
             //Mensagem de erro
             
             //Fecha a janela
             Stage stage = (Stage) btnHomePage.getScene().getWindow();
             stage.close();
         }
+        
+        imgGraph.setVisible(false);
+        lblResultado.setVisible(false);
+        lblInstrucoes.setText("Pressione o botão \"Iniciar a Medição\"");
     }
 
     @FXML
@@ -89,19 +97,29 @@ public class MedidorPulsoCardiacoUI implements Initializable {
     }
 
     @FXML
-    public void startMeasure() {    //Inicia a medição
+    public void startMeasure() throws InterruptedException {    //Inicia a medição
+        lblInstrucoes.setText("Coloque o seu dedo em cima no sensor");
+        imgGraph.setVisible(true);
+        
         controller.startMeasure();
+        
         btnSaveSession.setDisable(false);
         btnCancel.setDisable(false);
+        lblResultado.setVisible(true);
+        
+        lblInstrucoes.setText("Medição concluida. Se pretender guardar os dados pressione o botão \"Guardar\"");
     }
     
     @FXML
     public void saveSession(){      //Apresenta os elementos necessarios para guardar os dados
         if(saveOpt){
             saveOnCloud();
+            lblInstrucoes.setText("Informação guardada com sucesso. Pode fechar a janela.");
         } else {
+            lblInstrucoes.setText("Introduza o seu número de cliente e pressione o botão \"Guardar\"");
             saveOpt = true;
             tbID.setDisable(false);
+            btnKeyboard0.setDisable(false);
             btnKeyboard1.setDisable(false);
             btnKeyboard2.setDisable(false);
             btnKeyboard3.setDisable(false);
@@ -110,13 +128,19 @@ public class MedidorPulsoCardiacoUI implements Initializable {
             btnKeyboard6.setDisable(false);
             btnKeyboard7.setDisable(false);
             btnKeyboard8.setDisable(false);
-            btnKeyboard9.setDisable(false); 
+            btnKeyboard9.setDisable(false);
+            btnDelete.setDisable(false);
         }
     }
 
     public void saveOnCloud() {     //Regista os dados na Cloud
         int id = 0; //Obetr esta informação de um campo na UI
         controller.saveOnCloud(id);
+    }
+
+    @FXML
+    private void add0(ActionEvent event) {
+        tbID.setText(tbID.getText() + "0");
     }
 
     @FXML

@@ -51,7 +51,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <TextField fx:id="tbID" disable="true" layoutX="24.0" layoutY="222.0" prefHeight="50.0" prefWidth="200.0">
+            <TextField fx:id="tbID" disable="true" layoutX="24.0" layoutY="222.0" prefHeight="50.0" prefWidth="200.0" promptText="Número Cliente">
                <font>
                   <Font size="24.0" />
                </font>
@@ -101,9 +101,14 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="btnSaveSession1" disable="true" layoutX="36.0" layoutY="488.0" mnemonicParsing="false" onAction="#deleteText" prefHeight="50.0" prefWidth="175.0" text="Apagar">
+            <Button fx:id="btnDelete" disable="true" layoutX="100.0" layoutY="488.0" mnemonicParsing="false" onAction="#deleteText" prefHeight="50.0" prefWidth="110.0" text="Apagar">
                <font>
                   <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnKeyboard0" disable="true" layoutX="34.0" layoutY="488.0" mnemonicParsing="false" onAction="#add0" prefHeight="50.0" prefWidth="50.0" text="0">
+               <font>
+                  <Font size="24.0" />
                </font>
             </Button>
          </children>
@@ -112,7 +117,7 @@
    <right>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="140.0" prefHeight="146.0" prefWidth="175.0" text="Instruções" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="lblInstrucoes" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="10.0" layoutY="20.0" prefHeight="500.0" prefWidth="175.0" text="Instruções" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="24.0" />
                </font>
@@ -128,7 +133,7 @@
                   <Image url="@../icons/pulse.gif" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="66.0" layoutY="96.0" prefHeight="17.0" prefWidth="400.0" text="RESULTADO" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="lblResultado" alignment="CENTER" layoutX="66.0" layoutY="96.0" prefHeight="17.0" prefWidth="400.0" text="RESULTADO" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="64.0" />
                </font>
