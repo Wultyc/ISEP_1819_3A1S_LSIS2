@@ -1,9 +1,9 @@
-
 package Medidores;
 
 import Model.MedicaoPulsoCardiaco;
+//import com.fazecast.jSerialComm.*;
 
-public class PulsoCardiaco {
+public class Oximetro {
         private final String complatibleModel = "oximetro";
     
     private String deviceCOM;

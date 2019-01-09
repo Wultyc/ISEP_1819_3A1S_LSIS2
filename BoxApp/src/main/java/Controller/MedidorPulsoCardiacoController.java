@@ -1,13 +1,13 @@
 
 package Controller;
 
-import Medidores.PulsoCardiaco;
+import Medidores.Oximetro;
 import Model.MedicaoPulsoCardiaco;
 
 
 public class MedidorPulsoCardiacoController {
     private MedicaoPulsoCardiaco med;
-    private PulsoCardiaco medPC;
+    private Oximetro oxi;
     
 
 
@@ -28,25 +28,25 @@ public class MedidorPulsoCardiacoController {
     /**
      * @return the medPC
      */
-    public PulsoCardiaco getMedPC() {
-        return medPC;
+    public Oximetro getMedPC() {
+        return oxi;
     }
 
     /**
      * @param medPC the medPC to set
      */
-    public void setMedPC(PulsoCardiaco medPC) {
-        this.medPC = medPC;
+    public void setMedPC(Oximetro medPC) {
+        this.oxi = medPC;
     }
     
     public boolean startComunication(){
-        medPC = new PulsoCardiaco();
+        oxi = new Oximetro();
         return true;
     }
     
     public boolean startMeasure(){
         med = new MedicaoPulsoCardiaco(0);
-        medPC.startMeasure(med);
+        oxi.startMeasure(med);
         
         return true;
     }
