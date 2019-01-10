@@ -1,21 +1,29 @@
 package Medidores;
 
 import Model.MedicaoPulsoCardiaco;
-//import com.fazecast.jSerialComm.*;
+import com.fazecast.jSerialComm.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Scanner;
 
 public class Oximetro {
+
     private final String complatibleModel = "oximetro";
-    
+
     private MedicaoPulsoCardiaco med;
-    
+
+    private Scanner in;
+    private OutputStream out;
+
     private String deviceCOM;
     private String mp;
     private String model;
     private String portocol;
-    
+
     private boolean feedback;
     private String ans;
-    
+
     /**
      * @return the deviceCOM
      */
@@ -41,9 +49,39 @@ public class Oximetro {
     /**
      * @return boolean
      */
-    public boolean setMp() {
+    public boolean setMp() throws IOException {
+        String resp = "";
+        boolean cont = true;
+        
         //procura um equipamento compativel
-        //sendCommand(1)
+        SerialPort ports[] = SerialPort.getCommPorts();
+        SerialPort serialPort;
+
+        for (SerialPort port : ports) {
+            //Seleciona uma porta
+            serialPort = port;
+
+            if (!serialPort.openPort()) {
+                return false;
+            }
+
+            serialPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING, 0, 0);
+            in = new Scanner(serialPort.getInputStream());
+            out = serialPort.getOutputStream();
+
+            //Envia o comando 1
+            out.write(1);
+
+            //Recebe a resposta
+            while (in.hasNextLine() && cont) {
+                resp = in.nextLine();
+                if(resp.contains(this.complatibleModel)){
+                    cont = false;
+                    break;
+                }                
+            }
+            break;
+        }
         return true;
     }
 
@@ -55,7 +93,7 @@ public class Oximetro {
     }
 
     /**
-     * 
+     *
      */
     public void setModel() {
         int p = this.mp.indexOf(";");
@@ -70,7 +108,7 @@ public class Oximetro {
     }
 
     /**
-     * 
+     *
      */
     public void setPortocol() {
         int p = this.mp.indexOf(";");
@@ -104,42 +142,42 @@ public class Oximetro {
     public void setMed(MedicaoPulsoCardiaco med) {
         this.med = med;
     }
-    
-    public boolean sendCommand(int c){  //Comando com respota
+
+    public boolean sendCommand(int c) {  //Comando com respota
         this.ans = ""; //se exitir alguma resposta guada-a aqui
         this.feedback = true; //guarda o feedback
-        
+
         return this.feedback;
     }
-    
-    public boolean sendCommand(int c, String o){  //Comando com ordem
+
+    public boolean sendCommand(int c, String o) {  //Comando com ordem
         this.ans = ""; //se exitir alguma resposta guada-a aqui
         this.feedback = true; //guarda o feedback
-        
+
         return this.feedback;
     }
-    
-    public boolean firstMessage(){
-        boolean fb1,fb2;
-        
+
+    public boolean firstMessage() throws IOException {
+        boolean fb1, fb2;
+
         fb1 = setDeviceCOM();
         fb2 = setMp();
-        
-        if(fb1 == true && fb2 == true){
+
+        if (fb1 == true && fb2 == true) {
             setModel();
             setPortocol();
             return true;
-        } else{
+        } else {
             return false;
         }
     }
-    
-    public boolean startMeasure(){
-        
+
+    public boolean startMeasure() {
+
         sendCommand(3);
-        
-        if(this.feedback == true){
-            
+
+        if (this.feedback == true) {
+
             try {
                 getMed().setPulsoMedio(Integer.parseInt(this.ans));
             } catch (NumberFormatException e) {
@@ -147,10 +185,10 @@ public class Oximetro {
             }
             getMed().setTimestamp();
             return true;
-        } else{
+        } else {
             getMed().setError(true);
             return false;
         }
-        
+
     }
 }
