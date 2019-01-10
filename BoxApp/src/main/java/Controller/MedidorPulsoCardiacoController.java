@@ -41,12 +41,14 @@ public class MedidorPulsoCardiacoController {
     
     public boolean startComunication(){
         oxi = new Oximetro();
+        oxi.firstMessage();
         return true;
     }
     
     public boolean startMeasure(){
         med = new MedicaoPulsoCardiaco(0);
-        oxi.startMeasure(med);
+        oxi.setMed(med);
+        oxi.startMeasure();
         
         return true;
     }
