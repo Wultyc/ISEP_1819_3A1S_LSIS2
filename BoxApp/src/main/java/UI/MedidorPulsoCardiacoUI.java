@@ -75,7 +75,13 @@ public class MedidorPulsoCardiacoUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        boolean feedback = controller.startComunication();
+        boolean feedback = false;
+        
+        try {
+            feedback = controller.startComunication();
+        } catch (IOException ex) {
+            Logger.getLogger(MedidorPulsoCardiacoUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         if (!feedback) {
             try {
@@ -107,11 +113,13 @@ public class MedidorPulsoCardiacoUI implements Initializable {
     }
 
     @FXML
-    public void startMeasure() throws InterruptedException {    //Inicia a medição
+    public void startMeasure() throws IOException {    //Inicia a medição
         lblInstrucoes.setText("Coloque o seu dedo em cima no sensor");
         imgGraph.setVisible(true);
 
         controller.startMeasure();
+        
+        lblResultado.setText("Resultado: " + controller.getResult() + " bmp");
 
         btnSaveSession.setDisable(false);
         btnCancel.setDisable(false);

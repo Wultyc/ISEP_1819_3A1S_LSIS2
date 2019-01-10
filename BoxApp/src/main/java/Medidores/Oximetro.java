@@ -48,7 +48,7 @@ public class Oximetro {
     /**
      * @return boolean
      */
-    public boolean setMp() throws IOException {
+    public boolean firstMessage() throws IOException {
         String resp = "";
         boolean cont = true;
 
@@ -166,7 +166,7 @@ public class Oximetro {
         return this.feedback;
     }
 
-    public boolean firstMessage() throws IOException {
+    /*public boolean firstMessage() throws IOException {
         boolean fb1, fb2;
 
         fb1 = setDeviceCOM();
@@ -179,7 +179,7 @@ public class Oximetro {
         } else {
             return false;
         }
-    }
+    }*/
 
     public boolean startMeasure() throws IOException {
 
@@ -200,4 +200,5 @@ public class Oximetro {
         }
 
     }
+    
 }

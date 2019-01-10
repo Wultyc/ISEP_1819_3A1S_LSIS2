@@ -1,15 +1,13 @@
-
 package Controller;
 
 import Medidores.Oximetro;
 import Model.MedicaoPulsoCardiaco;
-
+import java.io.IOException;
 
 public class MedidorPulsoCardiacoController {
+
     private MedicaoPulsoCardiaco med;
     private Oximetro oxi;
-    
-
 
     /**
      * @return the med
@@ -38,24 +36,28 @@ public class MedidorPulsoCardiacoController {
     public void setMedPC(Oximetro medPC) {
         this.oxi = medPC;
     }
-    
-    public boolean startComunication(){
+
+    public boolean startComunication() throws IOException {
         oxi = new Oximetro();
         oxi.firstMessage();
         return true;
     }
-    
-    public boolean startMeasure(){
+
+    public boolean startMeasure() throws IOException {
         med = new MedicaoPulsoCardiaco(0);
         oxi.setMed(med);
         oxi.startMeasure();
-        
+
         return true;
     }
-    
-    public boolean saveOnCloud(int id){
+
+    public boolean saveOnCloud(int id) {
         med.setId(id);
         med.saveOnCloud();
         return true;
+    }
+
+    public String getResult() {
+        return "" + this.med.getPulsoMedio();
     }
 }
