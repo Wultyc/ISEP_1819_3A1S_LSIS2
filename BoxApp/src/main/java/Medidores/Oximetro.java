@@ -61,15 +61,17 @@ public class Oximetro {
             serialPort = port;
 
             if (!serialPort.openPort()) {
+                System.out.println("erro a abrir a porta");
                 return false;
             }
 
-            serialPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING, 0, 0);
+            serialPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING, 0, 0); //Muda os timeouts
             in = new Scanner(serialPort.getInputStream());
             out = serialPort.getOutputStream();
 
             //Envia o comando 1
             out.write(1);
+            System.out.println("enviei");
 
             //Recebe a resposta
             while (in.hasNextLine() && cont) {
@@ -79,8 +81,13 @@ public class Oximetro {
                     break;
                 }
             }
+            
+            
+            System.out.println("Recebi resposta");
             break;
         }
+        
+        
         return true;
     }
 
@@ -145,21 +152,17 @@ public class Oximetro {
     public boolean sendCommand(int c) throws IOException {  //Comando com respota
         boolean cont = true;
         String resp = "";
-        
+
         out.write(c);
 
-        while (in.hasNextLine() && cont) {
+        while (in.hasNextLine()) {
             resp = in.nextLine();
-            if (resp.contains(this.complatibleModel)) {
-                cont = false;
-                break;
-            }
         }
-        
-        try{
+
+        try {
             this.ans = "" + Integer.parseInt(resp);
             this.feedback = true;
-        } catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             this.feedback = false;
         }
 
@@ -180,7 +183,6 @@ public class Oximetro {
             return false;
         }
     }*/
-
     public boolean startMeasure() throws IOException {
 
         sendCommand(3);
@@ -200,5 +202,5 @@ public class Oximetro {
         }
 
     }
-    
+
 }
