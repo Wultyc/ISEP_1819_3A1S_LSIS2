@@ -3,7 +3,6 @@ package Medidores;
 import Model.MedicaoPulsoCardiaco;
 import com.fazecast.jSerialComm.*;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Scanner;
 
@@ -52,7 +51,7 @@ public class Oximetro {
     public boolean setMp() throws IOException {
         String resp = "";
         boolean cont = true;
-        
+
         //procura um equipamento compativel
         SerialPort ports[] = SerialPort.getCommPorts();
         SerialPort serialPort;
@@ -75,10 +74,10 @@ public class Oximetro {
             //Recebe a resposta
             while (in.hasNextLine() && cont) {
                 resp = in.nextLine();
-                if(resp.contains(this.complatibleModel)){
+                if (resp.contains(this.complatibleModel)) {
                     cont = false;
                     break;
-                }                
+                }
             }
             break;
         }
@@ -143,16 +142,26 @@ public class Oximetro {
         this.med = med;
     }
 
-    public boolean sendCommand(int c) {  //Comando com respota
-        this.ans = ""; //se exitir alguma resposta guada-a aqui
-        this.feedback = true; //guarda o feedback
+    public boolean sendCommand(int c) throws IOException {  //Comando com respota
+        boolean cont = true;
+        String resp = "";
+        
+        out.write(c);
 
-        return this.feedback;
-    }
-
-    public boolean sendCommand(int c, String o) {  //Comando com ordem
-        this.ans = ""; //se exitir alguma resposta guada-a aqui
-        this.feedback = true; //guarda o feedback
+        while (in.hasNextLine() && cont) {
+            resp = in.nextLine();
+            if (resp.contains(this.complatibleModel)) {
+                cont = false;
+                break;
+            }
+        }
+        
+        try{
+            this.ans = "" + Integer.parseInt(resp);
+            this.feedback = true;
+        } catch(NumberFormatException e){
+            this.feedback = false;
+        }
 
         return this.feedback;
     }
@@ -172,7 +181,7 @@ public class Oximetro {
         }
     }
 
-    public boolean startMeasure() {
+    public boolean startMeasure() throws IOException {
 
         sendCommand(3);
 
