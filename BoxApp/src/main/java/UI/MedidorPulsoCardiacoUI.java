@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,13 +16,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 public class MedidorPulsoCardiacoUI implements Initializable {
 
     MedidorPulsoCardiacoController controller = new MedidorPulsoCardiacoController();
-    
+
     private boolean saveOpt = false;
-    
+
     @FXML
     private BorderPane rootPane;
     @FXML
@@ -73,22 +76,24 @@ public class MedidorPulsoCardiacoUI implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         boolean feedback = controller.startComunication();
-        
-        if(!feedback){
-            //Mensagem de erro
-            
-            //Fecha a janela
-            Stage stage = (Stage) btnHomePage.getScene().getWindow();
-            stage.close();
+
+        if (!feedback) {
+            try {
+                //Mensagem de erro
+                JOptionPane.showMessageDialog(null, "Erro! Existe um erro com o medidor", "Erro!", JOptionPane.ERROR_MESSAGE);
+                //Fecha a janela
+                closeWindow();
+            } catch (IOException ex) {
+                Logger.getLogger(MedidorPulsoCardiacoUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        
+
         imgGraph.setVisible(false);
         lblResultado.setVisible(false);
         lblInstrucoes.setText("Pressione o botão \"Iniciar a Medição\"");
     }
-
-    @FXML
-    private void loadHomePage(ActionEvent event) throws IOException {
+    
+    private void closeWindow() throws IOException {
         /*BorderPane loadPane = FXMLLoader.load(getClass().getResource("/fxml/HomePageUI.fxml"));
       rootPane.getChildren().setAll(loadPane);  */
 
@@ -97,24 +102,37 @@ public class MedidorPulsoCardiacoUI implements Initializable {
     }
 
     @FXML
+    private void loadHomePage(ActionEvent event) throws IOException {
+        closeWindow();
+    }
+
+    @FXML
     public void startMeasure() throws InterruptedException {    //Inicia a medição
         lblInstrucoes.setText("Coloque o seu dedo em cima no sensor");
         imgGraph.setVisible(true);
-        
+
         controller.startMeasure();
-        
+
         btnSaveSession.setDisable(false);
         btnCancel.setDisable(false);
         lblResultado.setVisible(true);
-        
+
         lblInstrucoes.setText("Medição concluida. Se pretender guardar os dados pressione o botão \"Guardar\"");
     }
-    
+
     @FXML
-    public void saveSession(){      //Apresenta os elementos necessarios para guardar os dados
-        if(saveOpt){
-            saveOnCloud();
-            lblInstrucoes.setText("Informação guardada com sucesso. Pode fechar a janela.");
+    public void saveSession() {      //Apresenta os elementos necessarios para guardar os dados
+        if (saveOpt) {
+            int id = 0;
+            try {
+                id = Integer.parseInt(tbID.getText());
+                controller.saveOnCloud(id);
+                JOptionPane.showMessageDialog(null, "Informação guardada com sucesso.", "Guardado com sucesso!", JOptionPane.INFORMATION_MESSAGE);
+                lblInstrucoes.setText("Informação guardada com sucesso. Pode fechar a janela.");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro! O número que inseriu não é válido", "Erro!", JOptionPane.ERROR_MESSAGE);
+                lblInstrucoes.setText("O número que inseriu não é válido.\nIntroduza o seu número de cliente e pressione o botão \"Guardar\"");
+            }
         } else {
             lblInstrucoes.setText("Introduza o seu número de cliente e pressione o botão \"Guardar\"");
             saveOpt = true;
@@ -131,11 +149,6 @@ public class MedidorPulsoCardiacoUI implements Initializable {
             btnKeyboard9.setDisable(false);
             btnDelete.setDisable(false);
         }
-    }
-
-    public void saveOnCloud() {     //Regista os dados na Cloud
-        int id = 0; //Obetr esta informação de um campo na UI
-        controller.saveOnCloud(id);
     }
 
     @FXML
