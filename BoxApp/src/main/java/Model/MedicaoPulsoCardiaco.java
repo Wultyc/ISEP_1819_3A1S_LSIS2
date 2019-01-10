@@ -1,14 +1,23 @@
-
 package Model;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+public class MedicaoPulsoCardiaco extends Medicao {
 
-public class MedicaoPulsoCardiaco extends Medicao{
-    
+    private final String mainURL = "http://example.com/";
+
     private int pulsoMedio;
     private boolean error;
-    
+
     public MedicaoPulsoCardiaco(int id) {
         super(id);
     }
@@ -26,7 +35,7 @@ public class MedicaoPulsoCardiaco extends Medicao{
     public void setPulsoMedio(int pulsoMedio) {
         this.pulsoMedio = pulsoMedio;
     }
-    
+
     /**
      * @return the timestamp
      */
@@ -56,8 +65,16 @@ public class MedicaoPulsoCardiaco extends Medicao{
     public void setError(boolean error) {
         this.error = error;
     }
-    
-    public boolean saveOnCloud(){
+
+    public boolean saveOnCloud() {
+        try {
+            URL url = new URL(this.mainURL + super.getId() + "/" + this.pulsoMedio);
+            InputStream is = url.openStream();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(MedicaoPulsoCardiaco.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MedicaoPulsoCardiaco.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return true;
     }
 }

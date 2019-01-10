@@ -4,7 +4,9 @@ import Model.MedicaoPulsoCardiaco;
 //import com.fazecast.jSerialComm.*;
 
 public class Oximetro {
-        private final String complatibleModel = "oximetro";
+    private final String complatibleModel = "oximetro";
+    
+    private MedicaoPulsoCardiaco med;
     
     private String deviceCOM;
     private String mp;
@@ -88,6 +90,20 @@ public class Oximetro {
     public void setFeedback(boolean feedback) {
         this.feedback = feedback;
     }
+
+    /**
+     * @return the med
+     */
+    public MedicaoPulsoCardiaco getMed() {
+        return med;
+    }
+
+    /**
+     * @param med the med to set
+     */
+    public void setMed(MedicaoPulsoCardiaco med) {
+        this.med = med;
+    }
     
     public boolean sendCommand(int c){  //Comando com respota
         this.ans = ""; //se exitir alguma resposta guada-a aqui
@@ -118,21 +134,21 @@ public class Oximetro {
         }
     }
     
-    public boolean startMeasure(MedicaoPulsoCardiaco med){
+    public boolean startMeasure(){
         
         sendCommand(3);
         
         if(this.feedback == true){
             
             try {
-                med.setPulsoMedio(Integer.parseInt(this.ans));
+                getMed().setPulsoMedio(Integer.parseInt(this.ans));
             } catch (NumberFormatException e) {
-                med.setError(true);
+                getMed().setError(true);
             }
-            med.setTimestamp();
+            getMed().setTimestamp();
             return true;
         } else{
-            med.setError(true);
+            getMed().setError(true);
             return false;
         }
         
