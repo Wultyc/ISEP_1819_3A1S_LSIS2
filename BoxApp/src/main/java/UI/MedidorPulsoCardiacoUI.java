@@ -118,10 +118,16 @@ public class MedidorPulsoCardiacoUI implements Initializable {
     public void startMeasure() throws IOException {    //Inicia a medição
         lblInstrucoes.setText("Coloque o seu dedo em cima no sensor");
         imgGraph.setVisible(true);
+        
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(MedidorPulsoCardiacoUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         controller.startMeasure();
         
-        lblResultado.setText("Resultado: " + controller.getResult() + " bmp");
+        lblResultado.setText("Resultado: \n" + controller.getResult() + " bmp");
 
         btnSaveSession.setDisable(false);
         btnCancel.setDisable(false);
@@ -139,6 +145,7 @@ public class MedidorPulsoCardiacoUI implements Initializable {
                 controller.saveOnCloud(id);
                 JOptionPane.showMessageDialog(null, "Informação guardada com sucesso.", "Guardado com sucesso!", JOptionPane.INFORMATION_MESSAGE);
                 lblInstrucoes.setText("Informação guardada com sucesso. Pode fechar a janela.");
+                closeWindow();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro! O número que inseriu não é válido", "Erro!", JOptionPane.ERROR_MESSAGE);
                 lblInstrucoes.setText("O número que inseriu não é válido.\nIntroduza o seu número de cliente e pressione o botão \"Guardar\"");

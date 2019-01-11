@@ -128,12 +128,12 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="imgGraph" fitHeight="137.0" fitWidth="446.0" layoutX="69.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgGraph" fitHeight="137.0" fitWidth="446.0" layoutX="69.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/pulse.gif" />
                </image>
             </ImageView>
-            <Label fx:id="lblResultado" alignment="CENTER" layoutX="66.0" layoutY="96.0" prefHeight="17.0" prefWidth="400.0" text="RESULTADO" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="lblResultado" alignment="CENTER" layoutX="92.0" layoutY="14.0" prefHeight="203.0" prefWidth="400.0" text="RESULTADO: 60 bmp" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="64.0" />
                </font>
