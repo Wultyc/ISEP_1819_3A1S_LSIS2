@@ -11,6 +11,7 @@ public class Oximetro {
     private final String complatibleModel = "oximetro";
 
     private MedicaoPulsoCardiaco med;
+    private SerialPort serialPort;
 
     private Scanner in;
     private OutputStream out;
@@ -48,13 +49,12 @@ public class Oximetro {
     /**
      * @return boolean
      */
-    public boolean firstMessage() throws IOException {
+    public boolean firstMessage() throws IOException, InterruptedException {
         String resp = "";
         boolean cont = true;
 
         //procura um equipamento compativel
         SerialPort ports[] = SerialPort.getCommPorts();
-        SerialPort serialPort;
 
         for (SerialPort port : ports) {
             //Seleciona uma porta
@@ -62,33 +62,35 @@ public class Oximetro {
 
             if (!serialPort.openPort()) {
                 System.out.println("erro a abrir a porta");
-                return false;
             }
 
-            serialPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING, 0, 0); //Muda os timeouts
-            in = new Scanner(serialPort.getInputStream());
-            out = serialPort.getOutputStream();
+            System.out.println("Abri a porta " + serialPort.getSystemPortName());
+
+            serialPort.setComPortParameters(9600, 8, 1, 0); // default connection settings for Arduino
+            serialPort.setComPortTimeouts(SerialPort.TIMEOUT_NONBLOCKING, 0, 0); // block until bytes can be written
+
+            in = new Scanner(getSerialPort().getInputStream());
 
             //Envia o comando 1
-            out.write(1);
-            System.out.println("enviei");
+            Thread.sleep(2000);
+            serialPort.getOutputStream().write(1);
 
             //Recebe a resposta
-            while (in.hasNextLine() && cont) {
+            boolean hasNext = in.hasNextLine();
+            System.out.println("Tem dados para receber? " + hasNext);
+            while (hasNext && cont) {
                 resp = in.nextLine();
+                System.out.println("À espera de uma resposta. Resultado do stream: " + resp);
                 if (resp.contains(this.complatibleModel)) {
+                    System.out.println("Recebi uma resposta valida");
                     cont = false;
                     break;
                 }
             }
-            
-            
-            System.out.println("Recebi resposta");
-            break;
         }
-        
-        
-        return true;
+        System.out.println("Terminei o processo");
+
+        return !cont;
     }
 
     /**
@@ -184,11 +186,24 @@ public class Oximetro {
         }
     }*/
     public boolean startMeasure() throws IOException {
-
-        sendCommand(3);
+        String resp = "";
+        serialPort.setComPortTimeouts(SerialPort.TIMEOUT_SCANNER, 0, 0); // block until bytes can be written
+        //Recebe a resposta
+        boolean hasNext = in.hasNextLine();
+        System.out.println("Tem dados para receber? " + hasNext);
+        while (hasNext && this.feedback == false) {
+            resp = in.nextLine();
+            System.out.println("À espera de uma resposta. Resultado do stream: " + resp);            
+            try {
+                this.ans = "" + Integer.parseInt(resp);
+                this.feedback = true;
+                System.out.println("Recebi uma resposta valida");
+            } catch (Exception e) {
+                this.feedback = false;
+            }
+        }
 
         if (this.feedback == true) {
-
             try {
                 getMed().setPulsoMedio(Integer.parseInt(this.ans));
             } catch (NumberFormatException e) {
@@ -201,6 +216,13 @@ public class Oximetro {
             return false;
         }
 
+    }
+
+    /**
+     * @return the serialPort
+     */
+    public SerialPort getSerialPort() {
+        return serialPort;
     }
 
 }

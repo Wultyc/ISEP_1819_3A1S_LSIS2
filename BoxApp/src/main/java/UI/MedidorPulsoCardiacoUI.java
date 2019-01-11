@@ -81,6 +81,8 @@ public class MedidorPulsoCardiacoUI implements Initializable {
             feedback = controller.startComunication();
         } catch (IOException ex) {
             Logger.getLogger(MedidorPulsoCardiacoUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(MedidorPulsoCardiacoUI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         if (!feedback) {

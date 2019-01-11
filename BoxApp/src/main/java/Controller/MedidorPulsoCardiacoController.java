@@ -37,24 +37,24 @@ public class MedidorPulsoCardiacoController {
         this.oxi = medPC;
     }
 
-    public boolean startComunication() throws IOException {
+    public boolean startComunication() throws IOException, InterruptedException {
         oxi = new Oximetro();
-        oxi.firstMessage();
-        return true;
+        boolean r = oxi.firstMessage();
+        return r;
     }
 
     public boolean startMeasure() throws IOException {
         med = new MedicaoPulsoCardiaco(0);
         oxi.setMed(med);
-        oxi.startMeasure();
+        boolean r = oxi.startMeasure();
 
-        return true;
+        return r;
     }
 
     public boolean saveOnCloud(int id) {
         med.setId(id);
-        med.saveOnCloud();
-        return true;
+        boolean r = med.saveOnCloud();
+        return r;
     }
 
     public String getResult() {
