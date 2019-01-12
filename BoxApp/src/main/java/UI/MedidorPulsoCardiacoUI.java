@@ -76,7 +76,7 @@ public class MedidorPulsoCardiacoUI implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         boolean feedback = false;
-        
+
         try {
             feedback = controller.startComunication();
         } catch (IOException ex) {
@@ -100,7 +100,7 @@ public class MedidorPulsoCardiacoUI implements Initializable {
         lblResultado.setVisible(false);
         lblInstrucoes.setText("Pressione o botão \"Iniciar a Medição\"");
     }
-    
+
     private void closeWindow() throws IOException {
         /*BorderPane loadPane = FXMLLoader.load(getClass().getResource("/fxml/HomePageUI.fxml"));
       rootPane.getChildren().setAll(loadPane);  */
@@ -118,7 +118,7 @@ public class MedidorPulsoCardiacoUI implements Initializable {
     public void startMeasure() throws IOException {    //Inicia a medição
         lblInstrucoes.setText("Coloque o seu dedo em cima no sensor");
         imgGraph.setVisible(true);
-        
+
         try {
             Thread.sleep(5000);
         } catch (InterruptedException ex) {
@@ -126,7 +126,7 @@ public class MedidorPulsoCardiacoUI implements Initializable {
         }
 
         controller.startMeasure();
-        
+
         lblResultado.setText("Resultado: \n" + controller.getResult() + " bmp");
 
         btnSaveSession.setDisable(false);
@@ -142,9 +142,14 @@ public class MedidorPulsoCardiacoUI implements Initializable {
             int id = 0;
             try {
                 id = Integer.parseInt(tbID.getText());
-                controller.saveOnCloud(id);
-                JOptionPane.showMessageDialog(null, "Informação guardada com sucesso.", "Guardado com sucesso!", JOptionPane.INFORMATION_MESSAGE);
-                lblInstrucoes.setText("Informação guardada com sucesso. Pode fechar a janela.");
+                boolean r = controller.saveOnCloud(id);
+                if (r) {
+                    JOptionPane.showMessageDialog(null, "Informação guardada com sucesso.", "Guardado com sucesso!", JOptionPane.INFORMATION_MESSAGE);
+                    lblInstrucoes.setText("Informação guardada com sucesso. Pode fechar a janela.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Erro! Erro de registo na Cloud. Tente novamente.", "Erro!", JOptionPane.ERROR_MESSAGE);
+                lblInstrucoes.setText("Introduza o seu número de cliente e pressione o botão \"Guardar\"");
+                }
                 closeWindow();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro! O número que inseriu não é válido", "Erro!", JOptionPane.ERROR_MESSAGE);

@@ -2,6 +2,7 @@ package Model;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
@@ -64,14 +65,22 @@ public class MedicaoPulsoCardiaco extends Medicao {
     }
 
     public boolean saveOnCloud() {
+        int statusCode = 0;
         try {
             URL url = new URL(this.mainURL + "client=" + super.getId() + "&value=" + this.pulsoMedio);
-            InputStream is = url.openStream();
+            //InputStream is = url.openStream();
+            HttpURLConnection http = (HttpURLConnection) url.openConnection();
+            statusCode = http.getResponseCode();
+
         } catch (MalformedURLException ex) {
             Logger.getLogger(MedicaoPulsoCardiaco.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(MedicaoPulsoCardiaco.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return true;
+        if (statusCode == 200) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
