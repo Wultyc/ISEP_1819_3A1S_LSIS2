@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class MedicaoPulsoCardiaco extends Medicao {
 
-    private final String mainURL = "http://example.com/";
+    private final String mainURL = "http://microwells.rpinto.eu/index.php?";
 
     private int pulsoMedio;
     private boolean error;
@@ -65,7 +65,7 @@ public class MedicaoPulsoCardiaco extends Medicao {
 
     public boolean saveOnCloud() {
         try {
-            URL url = new URL(this.mainURL + super.getId() + "/" + this.pulsoMedio);
+            URL url = new URL(this.mainURL + "client=" + super.getId() + "&value=" + this.pulsoMedio);
             InputStream is = url.openStream();
         } catch (MalformedURLException ex) {
             Logger.getLogger(MedicaoPulsoCardiaco.class.getName()).log(Level.SEVERE, null, ex);
