@@ -72,10 +72,8 @@ public class MedicaoPulsoCardiaco extends Medicao {
             HttpURLConnection http = (HttpURLConnection) url.openConnection();
             statusCode = http.getResponseCode();
 
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(MedicaoPulsoCardiaco.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(MedicaoPulsoCardiaco.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            
         }
         if (statusCode == 200) {
             return true;

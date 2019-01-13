@@ -146,11 +146,11 @@ public class MedidorPulsoCardiacoUI implements Initializable {
                 if (r) {
                     JOptionPane.showMessageDialog(null, "Informação guardada com sucesso.", "Guardado com sucesso!", JOptionPane.INFORMATION_MESSAGE);
                     lblInstrucoes.setText("Informação guardada com sucesso. Pode fechar a janela.");
+                    closeWindow();
                 } else {
                     JOptionPane.showMessageDialog(null, "Erro! Erro de registo na Cloud. Tente novamente.", "Erro!", JOptionPane.ERROR_MESSAGE);
                 lblInstrucoes.setText("Introduza o seu número de cliente e pressione o botão \"Guardar\"");
                 }
-                closeWindow();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro! O número que inseriu não é válido", "Erro!", JOptionPane.ERROR_MESSAGE);
                 lblInstrucoes.setText("O número que inseriu não é válido.\nIntroduza o seu número de cliente e pressione o botão \"Guardar\"");
