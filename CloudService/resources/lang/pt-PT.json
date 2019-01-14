@@ -1,0 +1,47 @@
+{
+  "Home" : "Inicio",
+  "Selected Language" : "Idioma Selecionado",
+  "Online Support" : "Suporte Online",
+  "Available" : "Disponivel",
+  "Unavailable" : "Indisponivel",
+  "Authenticated User" : "Utilizador Autenticado",
+
+  "Statistics" : "Estatísticas",
+  "Pulsoximetry" : "Pulsoximetria",
+  "Cardiac Pulse" : "Pulso Cardiaco",
+  "Blood Pressure" : "Pressão Arterial",
+  "Weight" : "Peso",
+  "Height" : "Altura",
+
+  "Edit" : "Editar",
+  "Notifications" : "Notificações",
+  "Activity" : "Atividade",
+  "Messages": "Mensagens",
+  "Settings" : "Definições",
+
+  "Update Profile" : "Atualizar Perfil",
+  "Profile" : "Perfil",
+  "Personnal Informations" : "Informações Pessoais",
+  "Client Number": "Número de Cliente",
+  "Full Name" : "Nome Completo",
+  "Address Informations" : "Informações de Morada",
+  "Address" : "Morada",
+  "City": "Cidade",
+  "State": "Freguesia",
+  "Zip" : "Código-Postal",
+  "Save Changes" : "Guardar Alterações",
+  "Cancel": "Cancelar",
+
+  "Last Oximetry Reading" : "Última Leitura de Oximetria",
+  "Last Pulse Reading" :  "Última Leitura de Pulso",
+  "Max Value" : "Valor Máx",
+  "Measured Values" : "Valores Medidos",
+
+  "Oximetry Value" : "Valor de Oximetria",
+  "Pulse Value" : "Valor de Pulso",
+  "Control Information" : "Informação de Controlo",
+  "Date/Time" : "Data/Hora",
+  "Actions" : "Ações",
+  "In Control" : "Dentro de Controlo",
+  "Out of Control": "Fora de Controlo"
+}
